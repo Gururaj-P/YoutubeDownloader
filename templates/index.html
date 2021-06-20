@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Youtube Downloader</title>
+    <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.6.2/jquery.min.js"></script>
+    <link rel="stylesheet" href="static/css/style.css">
+</head>
+<body>
+    <script type="text/javascript">
+        function validateForm() {
+            var a = document.forms["Form"]["url"].value;
+
+            if (a == null || a == "") {
+                alert("Please Fill All Required Field");
+                return false;
+            }
+        }
+    </script>
+
+
+    <div class="container">
+        <div class="app-logo"></div>
+        <H1 class="app-title">Youtube Downloader</H1>
+        <form name="Form" onsubmit="return validateForm()" action="{{ url_for('download') }}" method="POST">
+            <label for="url">Enter the Youtube url:</label>
+            <input type="text" id="url" name="url"><br><br>
+            <input onclick="$('#loading').show();" type="submit" value="Download">
+        </form>
+        <br>
+        <div id="loading" style="display:none;">Downloading...</div>
+    </div>
+
+</body>
+</html>
